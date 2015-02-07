@@ -9,6 +9,10 @@
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+        <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script>
+        $.support.cors = true;
+        </script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -20,6 +24,20 @@
         <script>
           var canvas = document.querySelector('#canvas');
           var context = canvas.getContext('2d');
+
+          var image = new Image();
+          image.crossOrigin = "Anonymous";
+          image.onload = function() {
+
+            console.log('Loaded image');
+            context.drawImage(image, 0, 0, canvas.width, canvas.height);
+            // var localImageURL = canvas.toDataURL();
+            // window.open(localImageURL);
+
+            localStorage.setItem( "savedImageData", canvas.toDataURL("image/png") );
+          };
+
+          image.src = 'images/cat.jpg';
         </script>
     </body>
 </html>

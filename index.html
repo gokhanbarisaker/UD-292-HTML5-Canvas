@@ -31,10 +31,8 @@
 
             console.log('Loaded image');
             context.drawImage(image, 0, 0, canvas.width, canvas.height);
-            // var localImageURL = canvas.toDataURL();
-            // window.open(localImageURL);
-
-            localStorage.setItem( "savedImageData", canvas.toDataURL("image/png") );
+            var localImageURL = canvas.toDataURL();
+            window.open(localImageURL);
           };
 
           image.src = 'images/cat.jpg';

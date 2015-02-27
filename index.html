@@ -10,9 +10,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.2/normalize.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
         <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-        <script>
-        $.support.cors = true;
-        </script>
+        <script src="js/canvas.js"></script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -20,22 +18,42 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <canvas id="canvas" width="200" height="200"></canvas>
+        <canvas id="canvas" width="400" height="400"></canvas>
         <script>
           var canvas = document.querySelector('#canvas');
-          var context = canvas.getContext('2d');
+          imageLoader.load(canvas, 'images/cat.jpg', function(){
+            var context = canvas.getContext('2d');
 
-          var image = new Image();
-          image.crossOrigin = "Anonymous";
-          image.onload = function() {
+            // Text
+            context.font = "36pt Impact";
+            context.textAlign = "center";
 
-            console.log('Loaded image');
-            context.drawImage(image, 0, 0, canvas.width, canvas.height);
-            var localImageURL = canvas.toDataURL();
-            window.open(localImageURL);
-          };
+            context.fillStyle = "white";
+            context.fillText("This is a text!", canvas.width/2, 50);
 
-          image.src = 'images/cat.jpg';
+            context.lineWidth = 4;
+            context.strokeStyle = "black";
+            context.strokeText("This is a text!", canvas.width/2, 50);
+          });
+
+          // // Fill vs. Stroke
+          // context.fillRect(100, 100, 100, 100);
+          // context.strokeRect(50, 50, 50, 50);
+          //
+          // // Fill & Clear
+          // context.fillStyle = "blue";
+          // context.fillRect(0,0,50,50);
+          // context.clearRect(0,0,25,25);
+          //
+          // // Path & fill & stroke
+          // context.beginPath();
+          // context.moveTo(50,0);
+          // context.lineTo(200,50);
+          // context.lineTo(200,100);
+          // context.lineTo(50,0)
+          //
+          // context.stroke();
+          // // context.fill();
         </script>
     </body>
 </html>

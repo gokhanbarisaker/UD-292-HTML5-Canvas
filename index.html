@@ -19,6 +19,7 @@
 
         <!-- Add your site or application content here -->
         <canvas id="canvas" width="400" height="400"></canvas>
+
         <script>
           var canvas = document.querySelector('#canvas');
           imageLoader.load(canvas, 'images/cat.jpg', function(){
@@ -34,6 +35,11 @@
             context.lineWidth = 4;
             context.strokeStyle = "black";
             context.strokeText("This is a text!", canvas.width/2, 50);
+
+            // greenPixelImageFilter.apply(canvas);
+            grayscaleImageFilter.apply(canvas, function() {
+              console.log('Applied filter');
+            });
           });
 
           // // Fill vs. Stroke

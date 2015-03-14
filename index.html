@@ -37,7 +37,7 @@
             context.strokeText("This is a text!", canvas.width/2, 50);
 
             // greenPixelImageFilter.apply(canvas);
-            grayscaleImageFilter.apply(canvas, function() {
+            invertImageFilter.apply(canvas, function() {
               console.log('Applied filter');
             });
           });
